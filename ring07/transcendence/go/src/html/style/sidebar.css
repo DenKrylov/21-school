@@ -1,0 +1,20 @@
+.wondowChat{
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	width: 25rem;
+	height: 2rem;
+	right: 0;
+	bottom: 2.1rem;
+	background-color: var(--main-dark-backgroundNormal);
+}
+
+.wondowChat_header {
+	display: flex;
+	justify-content: space-between;
+	margin: .3rem;
+}
+
+.wondowChat_header_icon {
+	cursor: pointer;
+}

@@ -1,0 +1,86 @@
+version: "3.8"
+
+services:
+  db:
+    build: requirements/mariadb
+    container_name: db
+    env_file: .env
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - deNet
+
+  wordpress:
+    build: requirements/wordpress
+    container_name: wordpress
+    env_file: .env
+    restart: always
+    volumes:
+      - wp-data:/var/www/html
+    networks:
+      - deNet
+
+  nginx:
+    build: requirements/nginx
+    container_name: nginx
+    env_file: .env
+    restart: always
+    volumes:
+      - wp-data:/var/www/html
+    networks:
+      - deNet
+    ports:
+      - "443:443"
+
+  ftps:
+    build: requirements/bonus/ftps
+    container_name: ftps
+    env_file: .env
+    restart: always
+    volumes:
+      - wp-data:/var/www/html
+    ports:
+      - "20:20"
+      - "21:21"
+      - "30000:30000"
+  
+  adminer:
+    build: requirements/bonus/adminer
+    container_name: adminer
+    env_file: .env
+    restart: always
+    networks:
+      - deNet
+
+  resume:
+    build: requirements/bonus/resume
+    container_name: resume
+    env_file: .env
+    restart: always
+    networks:
+      - deNet
+    ports:
+      - 8080:80
+
+volumes:
+  wp-data:
+    name: wp-data
+    driver: local
+    driver_opts:
+      type: 'none'
+      device: '/home/monie/Documents/volumes/wordpress'
+      o: 'bind'
+  
+  db-data:
+    name: db-data
+    driver: local
+    driver_opts:
+      type: 'none'
+      device: '/home/monie/Documents/volumes/db'
+      o: 'bind'
+
+networks:
+  deNet:
+    name: deNet
+    driver: bridge

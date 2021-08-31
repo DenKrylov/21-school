@@ -1,0 +1,22 @@
+main {
+	display: flex;
+	flex: 1 0 auto;
+	flex-direction: column;
+	align-items: center;
+}
+
+.main_logo_img {
+	height: 40rem;
+	width: 70rem;
+}
+
+.main_header {
+	margin: 1rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.main_text {
+	margin: .3rem;
+	font-size: 1rem;
+}

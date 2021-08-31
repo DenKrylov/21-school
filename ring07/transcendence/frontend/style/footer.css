@@ -1,0 +1,24 @@
+.footer {
+	flex-shrink: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 2rem;
+}
+
+.footer_dark {
+	background: var(--main-dark-backgroundNormal);
+}
+
+.footer_light {
+	background: var(--main-light-backgroundNormal);
+}
+
+.footer_info {
+	margin: 0 0 0 1rem;
+}
+
+.footer_switchThem {
+	margin: 0 1rem 0 0;
+	cursor: pointer;
+}

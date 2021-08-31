@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  go:
+    build: go
+    ports:
+      - 8000:8000
+  nestjs:
+    build: nestjs
+    ports: 
+      - 8080:3000
+  db:
+    build: postgresql
+    restart: always
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 8040:5432

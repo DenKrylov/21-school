@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="style/body.css">
+	<link rel="stylesheet" href="style/chat.css">
+	<link rel="stylesheet" href="style/colors.css">
+	<link rel="stylesheet" href="style/footer.css">
+	<link rel="stylesheet" href="style/game.css">
+	<link rel="stylesheet" href="style/header.css">
+	<link rel="stylesheet" href="style/main.css">
+	<link rel="stylesheet" href="style/nav.css">
+	<link rel="stylesheet" href="style/sidebar.css">
+	<link rel="stylesheet" href="style/sign.css">
+	<link rel="stylesheet" href="style/style.css">
+	<title>Transcendence</title>
+	<script src="script/vue.js"></script>
+</head>
+<body>
+	<div class="app body" v-bind:class="vTeme('body')">
+		<header class="header" v-bind:class="vTeme('header')">
+			<h1 class="header_h1" v-on:click="showHome()">Transcendence</h1>
+			<div class="header_mid" v-bind:class="headeMid()">
+				<div class="header_chat" v-show="chatPage">
+					<img class="header_avatarka" src="images/avatarka.png" alt="avatarka">
+					<div class="hader_chatInfo">
+						<h3 class="header_chatHeader">{{ activeChat }}</h3>
+						<p class="header_chatScore">{{ numberOfMessages }}</p>
+					</div>
+				</div>
+				<div class="game_score" v-show="gamePage">
+					<div class="score_player score_one">
+						<img class="header_avatarka" src="images/avatarka.png" alt="avatarka">
+						<h4 class="score_one_nike">{{ user }}</h4>
+					</div>
+					<div class="score_game">
+						<p class="score_one">{{ scoreOne }}</p>
+						<p class="scoer_colon">:</p>
+						<p class="score_two">{{ scoreTwo }}</p>
+					</div>
+					<div class="score_player score_two">
+						<h4 class="score_two_nike">{{ enemy }}</h4>
+						<img class="header_avatarka" src="images/avatarka.png" alt="avatarka">
+					</div>
+				</div>
+			</div>
+			<ul class="header_nav">
+				<li class="header_li" v-if="login" v-on:click="showHome()" v-bind:class="isActiveMain()">Home</li>
+				<li class="header_li" v-if="login" v-on:click="showChat()" v-bind:class="isActiveChat()">Chat</li>
+				<li class="header_li" v-if="login" v-on:click="showGame()" v-bind:class="isActiveGame()">Game</li>
+				<li class="header_li header_user" v-if="login" v-on:click="changeUserMenu()">
+					<h4 class="header_use" v-bind:class="changeColorUser()">Monie</h4>
+					<img class="header_avatarka" src="images/avatarka.png" alt="avatarka">	
+				</li>
+				<li class="header_li header_li_active" v-else v-on:click="showSign()">Sign in</li>
+			</ul>
+			<ul class="header_userMenu" v-show="userMenu" v-bind:class="vTeme('header_userMenu')">
+				<li class="userMenu_li" v-on:click="changeUserMenu()">Profile</li>
+				<li class="userMenu_li" v-on:click="changeUserMenu()"><a v-bind:href="getProfileUser()">Profile intra</a></li>
+				<li class="userMenu_li userMenu_li_logout" v-on:click="logout(), changeUserMenu()">Logout</li>
+			</ul>
+		</header>
+		<main class="main" v-show="mainPage">
+			<div class="main_logo">
+				<img class="main_logo_img" src="images/logo.png" alt="macbook">
+			</div>
+			<h3 class="main_header" >Soon you will know that you’ve already known thingsthat you thought you didn’t know</h3>
+			<p class="main_text">Summary:  This is not C or C++ basic functions! To do something that you’ve never done</p>
+			<p class="main_text">before without a piscine. Remind yourself at the beginning of your journey</p>
+			<p class="main_text">in computer science. Now, look where you are standing. Time to shine</p>
+		</main>
+		<div class="chat" v-show="chatPage">
+			<ul class="chat_nav" v-bind:class="vTeme('chat_nav')">
+				<li li class="chat_users" v-for="chat in chats" v-on:click="setActiveChat(chat)" v-bind:class="getActiveChat(chat.name)">
+					<img class="chat_data_avatarka" src="images/avatarka.png" alt="avatarka">
+					<div class="chat_data">
+						<p class="chat_data__niknema">{{ chat.name }}</p>
+						<p class="chat_data__massage">{{ chat.message }}</p>
+					</div>
+				</li>
+			</ul>
+			<div class="chat_main">
+				<ul class="chat_dialog">
+					<li class="dialog" v-for="message in getDialog(chats)" v-bind:class="getClassDialog(message.user)">
+						<template v-if="message.user == user">
+							<div class="dialog_data dialog_data_my" v-bind:class="vTeme('dialog_data')">
+								<h4 class="dialog_name">{{ message.user }}</h6>
+								<p class="dialog_text">{{ message.text }}</p>
+							</div>
+							<img class="dialog_avatarka" src="images/avatarka.png" alt="avatarka">
+						</template>
+						<template v-else>
+							<img class="dialog_avatarka" src="images/avatarka.png" alt="avatarka">
+							<div class="dialog_data dialog_data_other" v-bind:class="vTeme('dialog_data')">
+								<h4 class="dialog_name">{{ message.user }}</h6>
+								<p class="dialog_text">{{ message.text }}</p>
+							</div>
+						</template>
+					</li>
+				</ul>
+				<div class="chat_push">
+					<form  id="chat_input">
+						<input class="chat_input" type="text" name="age" autofocus v-model="tmpMessage" autocomplete="off" v-bind:class="vTeme('chat_input')">
+					</form>
+					<input class="chat_send" type="submit" form="test" value="SEND" v-on:click="sendMessage()" v-on:enter="sendMessage()" v-bind:class="vTeme('chat_input')">
+				</div>
+			</div>
+		</div>
+		<div class="game" v-show="gamePage">
+			<div class="player_one"></div> 
+			<div class="field field_one"></div>
+			<div class="field field_two"></div>
+			<div class="player_two"></div>
+			<div class="ball" v-bind:class="vTeme('ball')"></div>
+		</div>
+		<footer class="footer" v-bind:class="vTeme('footer')">
+			<p class="footer_info">{{ bestGamer }}</p>
+			<p>2021 &copy; Transcendence</p>
+			<img class="footer_switchThem" v-bind:src="iconTheme()" alt="Switch them" v-on:click="changeTheme()">
+		</footer>
+		<div class="sign" v-show="signPage">
+			<div class="sign_window" v-bind:class="vTeme('sign_window')">
+				<h3 class="sign_logo">TRANSCENDENCE</h3>
+				<form  class="sign_form" id="sing_form">
+					<input class="sign_input" type="text" name="login" autofocus autocomplete="off" v-bind:class="vTeme('sign_input')">
+					<input class="sign_input" type="password" name="password" v-bind:class="vTeme('sign_input')">
+				</form>
+				<input class="sign_send" type="submit" form="test" value="SIGN IN" v-on:click="checkLogin()" v-bind:class="vTeme('sign_send')">
+			</div>
+		</div>
+	</div>
+	<script src="script/app.js"></script>
+</body>
+</html>

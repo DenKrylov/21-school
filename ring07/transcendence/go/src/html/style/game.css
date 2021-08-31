@@ -1,0 +1,58 @@
+.game {
+	flex: 1 0 auto;
+	display: flex;
+	width: 100%;
+}
+
+/* ----------------------------------------------------------------------------------------- */
+
+.field {
+	flex: 1 0 auto;
+}
+
+.field_one {
+	border: 1px solid var(--main-foregroundPositive);
+	border-left: none;
+}
+
+.field_two {
+	border: 1px solid var(--main-decorationFocus);
+	border-right: none;
+}
+
+.player_one {
+	position: absolute;
+	left: 0;
+	height: 20vh;
+	width: 2vh;
+	background-color: var(--main-decorationFocus);
+	border-radius: 0 .3rem .3rem 0;
+}
+
+.player_two {
+	position: absolute;
+	right: 0;
+	height: 20vh;
+	width: 2vh;
+	justify-content: end;
+	background-color: var(--main-foregroundPositive);
+	border-radius: .3rem 0 0 .3rem;
+}
+
+.ball {
+	position: absolute;
+	left: 30vw;
+	top: 72vh;
+	height: 5vh;
+	width: 5vh;
+	border-radius: 100%;
+	border: 1px solid var(--main-foregroundNeutral);
+}
+
+.ball_dark {
+	background: var(--main-dark-backgroundNormal);
+}
+
+.ball_light {
+	background: var(--main-light-backgroundNormal);
+}

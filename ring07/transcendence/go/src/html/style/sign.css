@@ -1,0 +1,86 @@
+.sign {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, .7);
+}
+
+.sign_window {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 30rem;
+	align-self: center;
+	border-radius: .3rem;
+}
+
+.sign_window_dark {
+	background: var(--main-dark-backgroundNormal);
+}
+
+.sign_window_light {
+	background: var(--main-light-backgroundNormal);
+}
+
+.sign_logo {
+	font-size: 3rem;
+	color: var(--main-decorationFocus);
+	margin: 2rem 0;
+}
+
+.sign_form {
+	display: flex;
+	flex-direction: column;
+}
+
+.sign_input {
+	display: flex;
+	height: 3rem;
+	margin: .5rem;
+	padding: 0 0 0 .5rem;
+	box-sizing: border-box;
+	color: var(--main-foregroundNormal);
+	border-radius: .3rem;
+	font-size: 1.5rem;
+}
+
+.sign_input_dark {
+	background: var(--main-dark-backgroundNormal);
+	border: 1px solid var(--main-dark-backgroundAlternate);
+}
+
+.sign_input_light {
+	background: var(--main-light-backgroundNormal);
+	border: 1px solid var(--main-light-backgroundAlternate);
+}
+
+.sign_send {
+	display: flex;
+	height: 3rem;
+	width: 7rem;
+	margin: .5rem 1rem 2rem 0;
+	box-sizing: border-box;
+	border-radius: .3rem;
+	cursor: pointer;
+	color: var(--main-decorationFocus);
+}
+
+.sign_send_dark {
+	background: var(--main-dark-backgroundNormal);
+	border: 1px solid var(--main-dark-backgroundAlternate);
+}
+
+.sign_send_light {
+	background: var(--main-light-backgroundNormal);
+	border: 1px solid var(--main-light-backgroundAlternate);
+}
+
+.sign_send:active {
+	transition: .1s;
+	background: var(--main-decorationFocus);
+	color: var(--main-foregroundNormal);
+}

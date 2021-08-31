@@ -1,0 +1,14 @@
+.body {
+	display: flex;
+	flex-direction: column;	
+}
+
+.body_dark {
+	background: var(--main-dark-backgroundAlternate);
+	color: var(--main-dark-foregroundNormal);
+}
+
+.body_light {
+	background: var(--main-light-backgroundAlternate);
+	color: var(--main-light-foregroundNormal);
+}

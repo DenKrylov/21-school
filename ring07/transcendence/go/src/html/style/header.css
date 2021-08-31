@@ -1,0 +1,177 @@
+.header {
+	display: flex;
+	height: 4rem;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header_dark {
+	background: var(--main-dark-backgroundNormal);
+}
+
+.header_light {
+	background: var(--main-light-backgroundNormal);
+}
+/* ----------------------------------------------------------------------------------------- */
+
+.header_h1 {
+	flex-shrink: 0;
+	width: 23rem;
+	margin: 0 0 0 1rem;
+	cursor: pointer;
+}
+
+.header_mid {
+	flex: 1 0 auto;
+	display: flex;
+}
+
+.header_midCenter {
+	justify-content: center;
+}
+
+.header_nav {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+}
+
+/* ----------------------------------------------------------------------------------------- */
+
+.header_li {
+	margin: 0 1rem 0 1rem;
+	color: var(--main-foregroundNormal);
+	padding: .5rem;
+	cursor: pointer;
+}
+
+.header_li_active {
+	color: var(--main-foregroundPositive);
+}
+
+.header_li:active {
+	color: var(--main-foregroundPositive);
+}
+
+.header_user {
+	display: flex;
+	flex-direction: row;
+	color: var(--main-decorationFocus);
+}
+
+.header_login__up:hover {
+	transition: .3s;
+	color: var(--main-foregroundLink);
+	border: 1px solid var(--main-foregroundLink);
+}
+
+/* ----------------------------------------------------------------------------------------- */
+.header_avatarka {
+	height: 3rem;
+	width: 3rem;
+	border-radius: 100%;
+	margin: 0 1rem;
+}
+/* ----------------------------------------------------------------------------------------- */
+.header_mid { 
+	display: flex;
+	flex: 1 0 auto;
+}
+/* Доделать середину хедара */
+
+.header_user {
+	display: flex;
+	align-items: center;	
+}
+
+.header_use {
+	display: flex;
+	justify-content: end;
+}
+.header_use__active {
+	color: var(--main-foregroundPositive);
+}
+
+.header_userMenu {
+	position: absolute;
+	top: 4rem;
+	right: 0;
+	width: 13rem;
+}
+
+.header_userMenu_dark {
+	background: var(--main-dark-backgroundNormal);
+}
+
+.header_userMenu_light {
+	background: var(--main-light-backgroundNormal);
+}
+
+.userMenu_li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 2rem;
+}
+
+.userMenu_li:hover {
+	box-sizing: border-box;
+	cursor: pointer;
+	border: 1px solid var(--main-foregroundVisited);
+}
+
+.userMenu_li:active {
+	color: var(--main-foregroundPositive);
+}
+
+.userMenu_li_logout {
+	font-size: larger;
+}
+
+/* ----------------------------------------------------------------------------------------- */
+.game_score {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 50rem;
+	font-size: 2rem;
+}
+
+.score_game {
+	display: flex;
+}
+
+.score_player {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+}
+
+.score_one {
+	color: var(--main-decorationFocus);
+}
+
+.score_two {
+	color: var(--main-foregroundPositive);
+}
+
+.scoer_colon {
+	margin: 0 1rem;
+}
+
+/* ----------------------------------------------------------------------------------------- */
+
+.header_chat {
+	display: flex;
+}
+
+.hader_chatInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.header_chatScore {
+	color: var(--main-foregroundVisited);
+}
